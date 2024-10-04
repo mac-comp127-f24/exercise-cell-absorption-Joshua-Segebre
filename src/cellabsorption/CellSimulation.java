@@ -18,6 +18,7 @@ public class CellSimulation {
     private Ellipse shape;
     private double radius;
     private double direction;
+    private Cell cell;
 
     public static void main(String[] args) {
         new CellSimulation();
@@ -30,8 +31,12 @@ public class CellSimulation {
         //noinspection InfiniteLoopStatement
         while (true) {
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
+            for(Cell cell: cells){
             moveAround(canvasCenter);
             grow(0.02);
+
+            }
+        
 
             canvas.draw();
             canvas.pause(10);
