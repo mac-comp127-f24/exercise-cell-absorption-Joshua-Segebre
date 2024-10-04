@@ -36,7 +36,7 @@ public class CellSimulation {
             grow(0.02);
 
             }
-        
+            
 
             canvas.draw();
             canvas.pause(10);
@@ -95,4 +95,12 @@ public class CellSimulation {
         double pi2 = Math.PI * 2;
         return ((theta + Math.PI) % pi2 + pi2) % pi2 - Math.PI;
     }
+
+    private void handleCellInteraction() {
+        for(int i=0; i< cells.size(); i++){
+            Cell originalCell= cell.get(i);
+            for(int t=i+1, t<cells.size(); t++);
+            Cell otherCell= cells.get(t);
+            originalCell.interactWith(otherCell);
+        }
 }
