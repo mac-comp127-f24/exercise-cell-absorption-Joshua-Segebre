@@ -18,6 +18,7 @@ public class CellSimulation {
     private Ellipse shape;
     private double radius;
     private double direction;
+    private Cell cell;
 
     public static void main(String[] args) {
         new CellSimulation();
@@ -30,8 +31,12 @@ public class CellSimulation {
         //noinspection InfiniteLoopStatement
         while (true) {
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
+            for(Cell cell: cells){
             moveAround(canvasCenter);
             grow(0.02);
+
+            }
+            
 
             canvas.draw();
             canvas.pause(10);
@@ -90,4 +95,12 @@ public class CellSimulation {
         double pi2 = Math.PI * 2;
         return ((theta + Math.PI) % pi2 + pi2) % pi2 - Math.PI;
     }
+
+    private void handleCellInteraction() {
+        for(int i=0; i< cells.size(); i++){
+            Cell originalCell= cell.get(i);
+            for(int t=i+1, t<cells.size(); t++);
+            Cell otherCell= cells.get(t);
+            originalCell.interactWith(otherCell);
+        }
 }
